@@ -35,7 +35,7 @@ function M.init(client, bufnr)
 
   -- inlay hints
   if client.supports_method('textDocument/inlayHint') then
-    buf_map('n', '<leader>lh', lsp_utils.toggle_inlay_hints(), { desc = 'Toggle inlay hints for buffer' })
+    buf_map('n', '<leader>lh', lsp_utils.toggle_inlay_hints(), { desc = 'Toggle inlay hints' })
   end
 
   -- code actions
