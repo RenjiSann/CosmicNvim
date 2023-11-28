@@ -27,37 +27,27 @@ local default_config = {
     on_attach_mappings = {},
     -- lsp servers that should be installed
     ensure_installed = {
-      'astro',
-      'eslint_d',
-      'prettierd',
       'cssls',
+      'eslint_d',
       'gopls',
-      'graphql',
       'html',
       'jsonls',
-      'tsserver',
       'lua_ls',
+      'prettierd',
       'pyright',
-      'svelte',
-      'tailwindcss',
       'yamlls',
     },
     -- lsp servers that should be enabled
     servers = {
-      astro = true,
-      tailwindcss = true,
+      gopls = true,
+      html = true,
       jsonls = {
         format = false,
       },
-      pyright = true,
       lua_ls = {
         format = false,
       },
-      gopls = true,
-      html = true,
-      tsserver = {
-        format = false,
-      },
+      pyright = true,
     },
   },
 }

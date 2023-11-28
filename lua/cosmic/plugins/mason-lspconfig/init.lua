@@ -25,9 +25,7 @@ return {
       local opts = default_config
 
       -- set up default cosmic options
-      if server == 'tsserver' then
-        opts = u.merge(opts, require('cosmic.lsp.providers.tsserver'))
-      elseif server == 'jsonls' then
+      if server == 'jsonls' then
         opts = u.merge(opts, require('cosmic.lsp.providers.jsonls'))
       elseif server == 'pyright' then
         opts = u.merge(opts, require('cosmic.lsp.providers.pyright'))

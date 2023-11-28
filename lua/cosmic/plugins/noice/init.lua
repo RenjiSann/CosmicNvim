@@ -64,9 +64,9 @@ return {
   event = 'VeryLazy',
   dependencies = {
     'MunifTanjim/nui.nvim',
-    { 'rcarriga/nvim-notify', opts = {
-      timeout = 1000,
-      fps = 60,
-    } },
+    --[[ { 'rcarriga/nvim-notify', opts = { ]]
+    --[[   timeout = 1000, ]]
+    --[[   fps = 60, ]]
+    --[[ } }, ]]
   },
 }

@@ -8,16 +8,6 @@ map('n', '<leader>cf', ':cfdo %s/', { desc = 'Search & Replace' })
 map('n', '<leader>cp', ':cprev<cr>zz', { desc = 'Prev Item' })
 map('n', '<leader>cn', ':cnext<cr>zz', { desc = 'Next Item' })
 
--- buffer navigation
-map('n', '<leader>bp', ':bprev<cr>', { desc = 'Prev buffer' })
-map('n', '<leader>bn', ':bnext<cr>', { desc = 'Next buffer' })
-map('n', '<leader>bd', ':bdelete<cr>', { desc = 'Delete buffer' })
-
--- tab navigation
-map('n', '<leader>tp', ':tabprevious<cr>', { desc = 'Prev tab' })
-map('n', '<leader>tn', ':tabnext<cr>', { desc = 'Next tab' })
-map('n', '<leader>td', ':tabclose<cr>', { desc = 'Close tab' })
-
 -- plugin management
 map('n', '<leader>pc', ':Lazy check<cr>', { desc = 'Check plugins' })
 map('n', '<leader>pu', ':Lazy update<cr>', { desc = 'Update plugins' })
