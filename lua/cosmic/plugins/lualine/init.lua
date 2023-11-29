@@ -57,7 +57,7 @@ return {
         },
         lualine_x = { 'diagnostics' },
         lualine_y = { lsp_utils.get_active_clients_str },
-        lualine_z = { 'location', 'progress' },
+        lualine_z = { 'location' },
       },
       inactive_sections = {
         lualine_a = {},

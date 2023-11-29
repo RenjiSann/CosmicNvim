@@ -5,7 +5,7 @@
 
 local config = {
     -- See :h nvim_open_win for possible border options
-    border = "rounded",
+    border = 'rounded',
     -- LSP settings
     lsp = {
         -- Enable/disable inlay hints
@@ -21,9 +21,10 @@ local config = {
 
         -- lsp servers that should be installed
         ensure_installed = {
-            "rust_analyzer",
-            "clangd",
-            "ruff_lsp",
+            'rust_analyzer',
+            'clangd',
+            'ruff_lsp',
+            'pyright',
         },
 
         -- lsp servers that should be enabled
@@ -32,19 +33,8 @@ local config = {
             clangd = true,
             rust_analyzer = true,
             ruff_lsp = true,
+            pyright = true,
 
-            -- Enable tsserver w/custom settings
-            --[[ tsserver = {
-                -- Disable formatting (defaults to true)
-                format = false,
-                -- OR add/override server options
-                opts = {
-                    on_attach = function(client, bufnr) end,
-                    flags = {
-                        debounce_text_changes = 150,
-                    },
-                },
-            },]]
             -- See Cosmic defaults lsp/providers/null_ls.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
             -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
             null_ls = {
@@ -53,16 +43,11 @@ local config = {
                 --disable formatting
                 format = false,
                 -- Add additional sources here
-                get_sources = function()
-                    local null_ls = require("null-ls")
+                add_sources = function()
+                    local null_ls = require('null-ls')
                     return {
                         null_ls.builtins.diagnostics.shellcheck,
-                        null_ls.builtins.diagnostics.actionlint.with({
-                            condition = function()
-                                local cwd = vim.fn.expand("%:p:.")
-                                return cwd:find(".github/workflows")
-                            end,
-                        }),
+                        null_ls.builtins.diagnostics.djlint,
                     }
                 end,
             },
@@ -98,7 +83,7 @@ local config = {
         -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
         luasnip = {
             history = false,
-            region_check_events = { "CursorMoved", "CursorHold", "InsertEnter" },
+            region_check_events = { 'CursorMoved', 'CursorHold', 'InsertEnter' },
         },
         -- See :h telescope.setup
         telescope = {},
@@ -107,15 +92,15 @@ local config = {
         -- See :h nvim-treesitter-quickstart
         treesitter = {
             ensure_installed = {
-                "bash",
-                "c",
-                "dockerfile",
-                "markdown",
-                "python",
-                "regex",
-                "rust",
-                "vim",
-            }
+                'bash',
+                'c',
+                'dockerfile',
+                'markdown',
+                'python',
+                'regex',
+                'rust',
+                'vim',
+            },
         },
         -- See :h cmp-usage
         nvim_cmp = {},
@@ -125,7 +110,7 @@ local config = {
 
     -- Disable plugins default enabled by CosmicNvim
     disable_builtin_plugins = {
-        "fugitive",
+        'fugitive',
         --[[
     'auto-session',
     'colorizer',
@@ -147,23 +132,23 @@ local config = {
     -- Add additional plugins (lazy.nvim)
     add_plugins = {
         {
-            "kdheepak/lazygit.nvim",
+            'kdheepak/lazygit.nvim',
             lazy = true,
             keys = {
-                { "<leader>vg", "<cmd>LazyGit<cr>", desc = "lazygit" },
+                { '<leader>vg', '<cmd>LazyGit<cr>', desc = 'lazygit' },
             },
         },
         {
-            "romgrk/barbar.nvim",
-            event = "VeryLazy",
+            'romgrk/barbar.nvim',
+            event = 'VeryLazy',
             keys = {
-                { "<leader>bn", "<cmd>BufferNext<CR>", desc = "next tab" },
-                { "<leader>bp", "<cmd>BufferPrevious<CR>", desc = "previous tab" },
-                { "<leader>bc", "<cmd>BufferClose<CR>", desc = "close tab" },
+                { '<leader>bn', '<cmd>BufferNext<CR>', desc = 'next tab' },
+                { '<leader>bp', '<cmd>BufferPrevious<CR>', desc = 'previous tab' },
+                { '<leader>bc', '<cmd>BufferClose<CR>', desc = 'close tab' },
             },
             dependencies = {
-                "lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
-                "nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+                'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+                'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
             },
             opts = {
                 -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
@@ -171,8 +156,8 @@ local config = {
                 -- insert_at_start = true,
                 -- …etc.
                 sidebar_filetypes = {
-                    NvimTree = true
-                }
+                    NvimTree = true,
+                },
             },
         },
     },
