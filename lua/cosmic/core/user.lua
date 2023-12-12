@@ -27,27 +27,27 @@ local default_config = {
     on_attach_mappings = {},
     -- lsp servers that should be installed
     ensure_installed = {
-      'cssls',
-      'eslint_d',
-      'gopls',
-      'html',
-      'jsonls',
-      'lua_ls',
-      'prettierd',
-      'pyright',
-      'yamlls',
+      -- 'cssls',
+      -- 'eslint_d',
+      -- 'gopls',
+      -- 'html',
+      -- 'jsonls',
+      -- 'lua_ls',
+      -- 'prettierd',
+      -- 'pyright',
+      -- 'yamlls',
     },
     -- lsp servers that should be enabled
     servers = {
-      gopls = true,
-      html = true,
-      jsonls = {
-        format = false,
-      },
-      lua_ls = {
-        format = false,
-      },
-      pyright = true,
+      -- gopls = true,
+      -- html = true,
+      -- jsonls = {
+      --   format = false,
+      -- },
+      -- lua_ls = {
+      --   format = false,
+      -- },
+      -- pyright = true,
     },
   },
 }

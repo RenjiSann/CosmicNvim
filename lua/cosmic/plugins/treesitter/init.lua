@@ -3,7 +3,6 @@ local u = require('cosmic.utils')
 
 local defaults = {
   ensure_installed = {
-    'astro',
     'css',
     'go',
     'html',
@@ -13,12 +12,8 @@ local defaults = {
     'lua',
     'markdown',
     'markdown_inline',
-    'php',
     'python',
     'regex',
-    'scss',
-    'tsx',
-    'typescript',
     'yaml',
   },
   highlight = {
@@ -32,7 +27,6 @@ local defaults = {
     enable = true,
   },
   context_commentstring = {
-    enable = true,
     enable_autocmd = false,
   },
   refactor = {

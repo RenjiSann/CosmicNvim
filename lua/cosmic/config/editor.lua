@@ -29,4 +29,4 @@ opt.wrap = true
 -- See :h vim.keymap for more info
 
 -- Disable search highlight
-map("n", "<leader>h", ":noh<CR>", { desc = "De-highlight search matches" })
+map("n", "<leader>z", ":noh<CR>", { desc = "De-highlight search matches" })

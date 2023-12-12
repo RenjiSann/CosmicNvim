@@ -31,7 +31,15 @@ local config = {
         servers = {
             -- Enable rust_analyzer
             clangd = true,
-            rust_analyzer = true,
+            -- rust_analyzer = true,
+            rust_analyzer = {
+                enabled = true,
+                opts = {
+                    root_dir = function(fname)
+                        return require('lspconfig').util.root_pattern('Cargo.toml')(fname)
+                    end,
+                },
+            },
             ruff_lsp = true,
             pyright = true,
 
@@ -48,6 +56,7 @@ local config = {
                     return {
                         null_ls.builtins.diagnostics.shellcheck,
                         null_ls.builtins.diagnostics.djlint,
+                        null_ls.builtins.formatting.djlint,
                     }
                 end,
             },
@@ -111,8 +120,8 @@ local config = {
     -- Disable plugins default enabled by CosmicNvim
     disable_builtin_plugins = {
         'fugitive',
+        'auto-session',
         --[[
-    'auto-session',
     'colorizer',
     'comment-nvim',
     'dashboard',
