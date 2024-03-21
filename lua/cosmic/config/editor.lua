@@ -1,7 +1,7 @@
 -- Override Cosmic editor options
 
 local g = vim.g
-local map = require("cosmic.utils").map
+local map = require('cosmic.utils').map
 local opt = vim.opt
 
 -- Default leader is <space>
@@ -29,4 +29,6 @@ opt.wrap = true
 -- See :h vim.keymap for more info
 
 -- Disable search highlight
-map("n", "<leader>z", ":noh<CR>", { desc = "De-highlight search matches" })
+map('n', '<leader>z', ':noh<CR>', { desc = 'De-highlight search matches' })
+
+vim.cmd([[colorscheme onedark]])

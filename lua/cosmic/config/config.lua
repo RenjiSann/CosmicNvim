@@ -25,13 +25,12 @@ local config = {
             'clangd',
             'ruff_lsp',
             'pyright',
+            'gopls',
         },
 
         -- lsp servers that should be enabled
         servers = {
-            -- Enable rust_analyzer
             clangd = true,
-            -- rust_analyzer = true,
             rust_analyzer = {
                 enabled = true,
                 opts = {
@@ -42,14 +41,23 @@ local config = {
             },
             ruff_lsp = true,
             pyright = true,
+            gopls = true,
+            lua_ls = false,
+            eslint = true,
+
+            -- Config languages
+            yamlls = true,
+            jsonls = true,
+            taplo = true, -- TOML
 
             -- See Cosmic defaults lsp/providers/null_ls.lua and https://github.com/jose-elias-alvarez/null-ls.nvim/
             -- If adding additional sources, be sure to also copy the defaults that you would like to preserve from lsp/providers/null_ls.lua
             null_ls = {
+                enabled = false,
                 -- Disable default list of sources provided by CosmicNvim
-                default_cosmic_sources = false,
-                --disable formatting
-                format = false,
+                default_cosmic_sources = true,
+                -- enable formatting
+                format = true,
                 -- Add additional sources here
                 add_sources = function()
                     local null_ls = require('null-ls')
@@ -88,7 +96,11 @@ local config = {
         -- See https://github.com/ray-x/lsp_signature.nvim#full-configuration-with-default-values
         lsp_signature = {},
         -- See https://github.com/nvim-lualine/lualine.nvim#default-configuration
-        lualine = {},
+        lualine = {
+            options = {
+                theme = 'onedark',
+            },
+        },
         -- See https://github.com/L3MON4D3/LuaSnip/blob/577045e9adf325e58f690f4d4b4a293f3dcec1b3/README.md#config
         luasnip = {
             history = false,
@@ -121,6 +133,7 @@ local config = {
     disable_builtin_plugins = {
         'fugitive',
         'auto-session',
+        'tokyonight',
         --[[
     'colorizer',
     'comment-nvim',
@@ -131,7 +144,6 @@ local config = {
     'nvim-cmp',
     'nvim-tree',
     'telescope',
-    'terminal',
     'theme',
     'todo-comments',
     'treesitter',
@@ -167,6 +179,32 @@ local config = {
                 sidebar_filetypes = {
                     NvimTree = true,
                 },
+            },
+        },
+        {
+            'navarasu/onedark.nvim',
+            lazy = false,
+            opts = {
+                style = 'deep',
+                lualine = {
+                    transparent = true,
+                },
+            },
+        },
+        {
+            'linux-cultist/venv-selector.nvim',
+            dependencies = { 'neovim/nvim-lspconfig', 'nvim-telescope/telescope.nvim', 'mfussenegger/nvim-dap-python' },
+            opts = {
+                -- Your options go here
+                name = {"venv", ".venv"},
+                -- auto_refresh = false
+            },
+            event = 'VeryLazy', -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+            keys = {
+                -- Keymap to open VenvSelector to pick a venv.
+                { '<leader>vs', '<cmd>VenvSelect<cr>' },
+                -- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
+                { '<leader>vd', '<cmd>VenvSelectCached<cr>' },
             },
         },
     },
