@@ -41,10 +41,11 @@ function M.format(bufnr, timeout)
       return false
     end
   end
+  assert(bufnr ~= nil and bufnr ~= 0)
   vim.lsp.buf.format({
     timeout_ms = timeout,
     filter = filter,
-    bufnr = bufnr or 0,
+    bufnr = bufnr,
   })
 end
 
